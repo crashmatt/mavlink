@@ -851,8 +851,8 @@ def mode_string_v10(msg):
             mavlink.MAV_MODE_GUIDED_ARMED : 'GUIDED',
             mavlink.MAV_MODE_AUTO_ARMED : 'AUTO'
             }
-        if msg.system_status in mapping_std:
-                return mapping_std[msg.system_status]        
+        if msg.base_mode in mapping_std:
+                return mapping_std[msg.base_mode]        
         return "Mode(%d)" % msg.system_status
     else:
         if(msg.autopilot == mavlink.MAV_AUTOPILOT_ARDUPILOTMEGA):
