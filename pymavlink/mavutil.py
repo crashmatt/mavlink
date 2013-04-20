@@ -1008,26 +1008,26 @@ def mode_string_v10(msg):
         15 : 'GUIDED',
         16 : 'INITIALISING'
         }
-	mapping_matrixpilot = {
-		1 : 'MANUAL',     # Autopilot passing thru all servo commands from receiver
-		2 : 'STABILIZE',  # Autopilot assisting stabilized flight.
-		3 : 'AUTO',       # Plane following autonomous flight plan
-		4 : 'RTL',        # Return to Launch. Radio contact lost with transmitter.
-		5 : 'FBW'         # Fly by wire
-		}
+    mapping_matrixpilot = {
+        1 : 'MANUAL',     # Autopilot passing thru all servo commands from receiver
+        2 : 'STABILIZE',  # Autopilot assisting stabilized flight.
+        3 : 'AUTO',       # Plane following autonomous flight plan
+        4 : 'RTL',        # Return to Launch. Radio contact lost with transmitter.
+        5 : 'FBW'         # Fly by wire
+        }
     if msg.type == mavlink.MAV_TYPE_QUADROTOR:
         if msg.custom_mode in mapping_acm:
             return mapping_acm[msg.custom_mode]
     if msg.type == mavlink.MAV_TYPE_FIXED_WING:
         if msg.custom_mode in mapping_apm:
             return mapping_apm[msg.custom_mode]
-		if msg.custom_mode in mapping_matrixpilot:
-			return mapping_matrixpilot[msg.custom_mode]
+        if msg.custom_mode in mapping_matrixpilot:
+            return mapping_matrixpilot[msg.custom_mode]
     if msg.type == mavlink.MAV_TYPE_GROUND_ROVER:
         if msg.custom_mode in mapping_rover:
             return mapping_rover[msg.custom_mode]
     return "Mode(%u)" % msg.custom_mode
-	
+
 
 class x25crc(object):
     '''x25 CRC - based on checksum.h from mavlink library'''
