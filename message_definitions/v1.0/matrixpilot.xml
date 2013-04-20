@@ -11,8 +11,29 @@
 
 
 
-
      <enums>
+          <enum name=MATRIXPILOT_MODES">
+               <description>How SITL is configured to override normal UDB operations</description>
+               <entry value="0" name="MATRIXPILOT_MODE_MANUAL">
+                    <description>Manual mode</description>
+               </entry>
+               <entry value="1" name="MATRIXPILOT_MODE_STABLIZED">
+                    <description>Manual mode</description>
+               </entry>
+               <entry value="2" name="MATRIXPILOT_MODE_STABILIZE">
+                    <description>Manual mode</description>
+               </entry>
+               <entry value="3" name="MATRIXPILOT_MODE_AUTO">
+                    <description>Manual mode</description>
+               </entry>
+               <entry value="4" name="MATRIXPILOT_MODE_NO_RADIO">
+                    <description>Manual mode</description>
+               </entry>
+               <entry value="5" name="MATRIXPILOT_MODE_FBW">
+                    <description>Manual mode</description>
+               </entry>
+          </enum>
+
           <enum name="MAV_PREFLIGHT_STORAGE_ACTION">
                <description>Action required when performing CMD_PREFLIGHT_STORAGE</description>
                <entry value="0" name="MAV_PFS_CMD_READ_ALL">
