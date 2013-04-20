@@ -1018,11 +1018,12 @@ def mode_string_v10(msg):
     if msg.type == mavlink.MAV_TYPE_QUADROTOR:
         if msg.custom_mode in mapping_acm:
             return mapping_acm[msg.custom_mode]
+    if msg.autopilot == mavlink.MAV_AUTOPILOT_UDB :
+        if msg.custom_mode in mapping_matrixpilot:
+            return mapping_matrixpilot[msg.custom_mode]
     if msg.type == mavlink.MAV_TYPE_FIXED_WING:
         if msg.custom_mode in mapping_apm:
             return mapping_apm[msg.custom_mode]
-        if msg.custom_mode in mapping_matrixpilot:
-            return mapping_matrixpilot[msg.custom_mode]
     if msg.type == mavlink.MAV_TYPE_GROUND_ROVER:
         if msg.custom_mode in mapping_rover:
             return mapping_rover[msg.custom_mode]
