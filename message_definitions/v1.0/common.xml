@@ -3645,7 +3645,8 @@
       <field type="float" name="distance">Distance to the target from the vehicle in meters</field>
       <field type="float" name="size_x">Size in radians of target along x-axis</field>
       <field type="float" name="size_y">Size in radians of target along y-axis</field>
-    </message>
+    </message>   
+   
     <!-- MESSAGE IDs 180 - 229: Space for custom messages in individual projectname_messages.xml files -->
     <message id="230" name="ESTIMATOR_STATUS">
       <description>Estimator status message including flags, innovation test ratios and estimated accuracies. The flags message is an integer bitmask containing information on which EKF outputs are valid. See the ESTIMATOR_STATUS_FLAGS enum definition for further information. The innovaton test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovaton test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.</description>
@@ -3724,6 +3725,17 @@
       <field name="failsafe" type="uint8_t">failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GPS, bit3:GCS, bit4:fence)</field>
       <field name="wp_num" type="uint8_t">current waypoint number</field>
       <field name="wp_distance" type="uint16_t">distance to target (meters)</field>
+    </message>
+    <message id="235" name="MIXER_DATA">
+       <description>Mixer data emitted after a read or set request</description>
+       <field type="uint8_t" name="mixer_group" enum="MIXER_GROUP">Access to different sets of mixers ie. onboard, failsafe, uavcan etc..</field>
+       <field type="uint8_t" name="mixer_index">Index of the mixer in the group</field>
+       <field type="uint8_t" name="mixer_sub_index">Index of the sub mixer in the mixer</field>
+       <field type="uint8_t" name="parameter_index">Index of the parameter in the mixer or sub mixer</field>
+       <field type="uint8_t" name="data_type" enum="MIXER_DATA_TYPE">Mixer data type</field>
+       <field type="int32_t" name="data_value">Integer mixer data</field>
+       <field type="float" name="param_value">Parameter value</field>
+       <field type="uint8_t" name="param_type" enum="MAV_PARAM_TYPE">Parameter type: see the MAV_PARAM_TYPE enum for supported data types.</field>
     </message>
     <message id="241" name="VIBRATION">
       <description>Vibration levels and accelerometer clipping</description>
@@ -3975,19 +3987,6 @@
                <field type="uint8_t" name="mixer_sub_index">Index of the sub mixer in the mixer</field>
                <field type="uint8_t" name="parameter_index">Index of the parameter in the mixer or sub mixer</field>
                <field type="uint8_t" name="data_type" enum="MIXER_DATA_TYPE">The requested data from the message</field>
-          </message>
-          <message id="270" name="MIXER_DATA">
-               <description>Mixer data emitted after a read or set request</description>
-               <field type="uint8_t" name="target_system">system ID of the target</field>
-               <field type="uint8_t" name="target_component">component ID of the target</field>
-               <field type="uint8_t" name="mixer_group" enum="MIXER_GROUP">Access to different sets of mixers ie. onboard, failsafe, uavcan etc..</field>
-               <field type="uint8_t" name="mixer_index">Index of the mixer in the group</field>
-               <field type="uint8_t" name="mixer_sub_index">Index of the sub mixer in the mixer</field>
-               <field type="uint8_t" name="parameter_index">Index of the parameter in the mixer or sub mixer</field>
-               <field type="uint8_t" name="data_type" enum="MIXER_DATA_TYPE">Mixer data type</field>
-               <field type="int32_t" name="data_value">Integer mixer data</field>
-               <field type="float" name="param_value">Parameter value</field>
-               <field type="uint8_t" name="param_type" enum="MAV_PARAM_TYPE">Parameter type: see the MAV_PARAM_TYPE enum for supported data types.</field>
           </message>
           <message id="271" name="MIXER_PARAMETER_SET">
                <description>Set a mixer parameter</description>
